@@ -14,6 +14,10 @@
  * Domain Path:       /languages
  */
 
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 function remote_page_inject_shortcode( $atts ) {
 
 	// Attributes
