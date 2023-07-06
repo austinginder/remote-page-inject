@@ -1,0 +1,24 @@
+{
+    "name" : "Remote Page Inject",
+    "slug" : "remote-page-inject",
+    "author" : "<a href='https://austinginder.com'>Austin Ginder</a>",
+    "author_profile" : "https://profiles.wordpress.org/austinginder",
+    "donate_link" : "https://github.com/sponsors/austinginder",
+    "version" : "1.0.0",
+    "download_url" : "https://github.com/austinginder/remote-page-inject/releases/download/v1.0/remote-page-inject.zip",
+    "requires" : "5.6",
+    "tested" : "6.2.2",
+    "requires_php" : "5.6",
+    "added" : "2023-07-02 16:10:00",
+    "last_updated" : "2023-07-02 16:10:00",
+    "homepage" : "https://github.com/austinginder/remote-page-inject",
+    "sections" : {
+        "description" : "Fetches raw html from remote URL and injects into current page.",
+        "installation" : "Click the activate button and that's it.",
+        "changelog" : "<h4>v1.0 released on July 2nd, 2023</h4><ul><li>New shortcode <code>[remote_page_inject url=\"\"]</code></li><li>HTML <code>head</code> response injected with <code>wp_head</code> hook.</li><li>HTML <code>body</code> response injected where shortcode is placed.</li><li>HTML response stored in cache and refreshed daily.</li></ul>"
+    },
+    "banners" : {
+        "low" : "https://raw.githubusercontent.com/austinginder/remote-page-inject/main/img/banner-772x250.webp",
+        "high" : "https://raw.githubusercontent.com/austinginder/remote-page-inject/main/img/banner-1544x500.webp"
+    }
+}
