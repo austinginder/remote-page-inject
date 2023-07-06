@@ -1,10 +1,9 @@
 <?php 
 
 /**
- * @wordpress-plugin
  * Plugin Name:       Remote Page Inject
  * Plugin URI:        https://github.com/austinginder/remote-page-inject
- * Description:       Fetches raw html response from remote URL and injects into current page.
+ * Description:       Fetches raw html from remote URL and injects into current page.
  * Version:           1.0.0
  * Author:            Austin Ginder
  * Author URI:        https://austinginder.com
@@ -20,8 +19,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 function remote_page_inject_shortcode( $atts ) {
 
-	// Attributes
-	$atts = shortcode_atts( [ "url" => "" ], $atts, 'remote_page_inject' );
+    // Attributes
+    $atts = shortcode_atts( [ "url" => "" ], $atts, 'remote_page_inject' );
     $url  = $atts['url'];
 
     if ( empty( $url ) ) {
@@ -107,3 +106,7 @@ function get_remote_page_inject_headers( $url ) {
     return $head->saveHTML();
 
 }
+
+// Hook in plugin updates
+require "updater.php";
+new RemotePageInject\Updater();
