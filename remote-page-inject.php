@@ -71,7 +71,7 @@ function remote_page_inject_if_needed() {
         $url = trim( trim( $matches[1], "'"), '"' );
         echo get_remote_page_inject_headers( $url );
     }
- 
+
 }
 add_action( 'wp_head', 'remote_page_inject_if_needed' );
 
@@ -103,6 +103,39 @@ function get_remote_page_inject_headers( $url ) {
     foreach ( $header_element->childNodes as $child ) {
         $head->appendChild($head->importNode($child, true));
     }
+
+    // Load HTML tag
+    $html_tag  = $dom->getElementsByTagName( "html" );
+    if ( empty( $html_tag->length ) ) {
+        return $head->saveHTML();
+    }
+
+    $styles    = $html_tag[0]->getAttribute( "style" );
+    $classes   = $html_tag[0]->getAttribute( "class" );
+
+    // Inject styles for HTML tag
+    if ( ! empty( $styles ) ) {
+        $styleNode = $dom->createElement("style", "html { $styles }" );
+        $styleNode->setAttribute('type', 'text/css');
+        $head->appendChild($head->importNode($styleNode, true));
+    }
+
+    // Inject classes for HTML tag
+    if ( ! empty( $classes ) ) {
+        $javascript_code = <<< EOT
+remote_classes = "$classes"
+remote_classes.trim().split(" ").forEach(addRemoteClassToHTML)
+function addRemoteClassToHTML(item) {
+    let el = document.querySelector("html");
+    el.classList.add( item );
+}
+EOT;
+        $javascriptNode = $dom->createElement("script");
+        $script         = $dom->createTextNode( $javascript_code );
+        $javascriptNode->appendChild( $script );
+        $head->appendChild($head->importNode($javascriptNode, true));
+    }
+
     return $head->saveHTML();
 
 }
