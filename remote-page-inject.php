@@ -4,7 +4,7 @@
  * Plugin Name:       Remote Page Inject
  * Plugin URI:        https://github.com/austinginder/remote-page-inject
  * Description:       Fetches raw html from remote URL and injects into current page.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Austin Ginder
  * Author URI:        https://austinginder.com
  * License:           MIT License

@@ -12,7 +12,7 @@ class Updater {
     public function __construct() {
 
         $this->plugin_slug   = 'remote-page-inject';
-        $this->version       = '1.0.0';
+        $this->version       = '1.0.1';
         $this->cache_key     = 'remote_page_inject_updater';
         $this->cache_allowed = false;
 
